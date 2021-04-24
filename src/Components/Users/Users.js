@@ -1,6 +1,19 @@
 import Container from '../UI/Container/Container';
 import Button from '../UI/Button/Button';
 import { useState } from 'react';
+import styled from 'styled-components';
+
+const Form = styled.form`
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+
+    & label{
+        margin: .6rem 0 .3rem 0;
+    }
+
+    & button
+`;
 
 const Users = (props) => {
     const [username, setUsername] = useState('');
@@ -8,13 +21,13 @@ const Users = (props) => {
 
     const saveUserHandler = (event) => {
         setUsername(event.target.value);
-      }
+    }
     
-      const saveAgeHandler = (event) => {
+    const saveAgeHandler = (event) => {
         setAge(event.target.value);
-      }
+    }
     
-      const submitHandler = (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
     
         const enteredData = {
@@ -31,13 +44,14 @@ const Users = (props) => {
 
     return(
         <Container>
-            <form onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler}>
                 <label>Usuário</label>
                 <input type="text" value={username} onChange={saveUserHandler}></input>
-                <label>Idade (anos)</label>
-                <input type="text" value={age} onChange={saveAgeHandler}></input>
+                <label>Idade</label>
+                <input type="number" min="0" max="120" value={age} onChange={saveAgeHandler}></input>
                 <Button type="submit">Adicionar Usuário</Button>
-            </form>
+                <Button type="button" onClick={props.onCleanList}>Limpar Usuários</Button>
+            </Form>
         </Container>
     )
 }

@@ -6,22 +6,43 @@ import { useState } from 'react';
 const AppContainer = styled.div`
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
   text-align: center;
+  background-color: #274360;
 `;
 
 const App = () => {
-  const [arrData, setArrData] = useState('');
+  const [arrData, setArrData] = useState([]);
 
-  const liftUsersStateHandler = enteredData => {
+  const liftUsersStateHandler = (enteredData) => {
     setArrData( (prevArrData) => {
-      [enteredData, ...prevArrData];
+      return [enteredData, ...prevArrData];
+    });
+  }
+
+  const cleanUsersHandler = () => {
+    setArrData([]);
+  }
+  
+  const deleteCardItemHandler = cardItem => {
+    let indCardItem;
+    for(let i = 0; i < arrData.length; i++){
+      if(arrData[i].id === cardItem.id){
+        indCardItem = i;
+      }
+    }
+    arrData.splice(indCardItem, 1);
+    setArrData( (prevArrData) => {
+      return [...prevArrData];
     });
   }
 
   return (
     <AppContainer>
-      <Users onLiftingState={liftUsersStateHandler}></Users>
-      <Card items={arrData}></Card>
+      <Users onLiftingState={liftUsersStateHandler} onCleanList={cleanUsersHandler}></Users>
+      <Card items={arrData} onCleanUser={deleteCardItemHandler}></Card>
     </AppContainer>
   );
 }
