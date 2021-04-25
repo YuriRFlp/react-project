@@ -19,10 +19,10 @@ const Card = (props) => {
             {props.items.map( (card) => (
                 <CardItems 
                     key={card.id}
-                    user={card.user}
-                    years={card.years}
                     id={card.id}
-                    onLifting={liftCardItem}>
+                    onLifting={liftCardItem}
+                    user={card.user}
+                    years={card.years}>
                 </CardItems>
             ))}
         </Container>

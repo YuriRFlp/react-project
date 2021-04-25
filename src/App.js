@@ -4,13 +4,14 @@ import Card from './Components/Card/Card';
 import { useState } from 'react';
 
 const AppContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
+  display: grid;
   text-align: center;
-  background-color: #274360;
+
+  & h1{
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0;
+  }
 `;
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
 
   return (
     <AppContainer>
+      <h1>Lista de Usuários</h1>
       <Users onLiftingState={liftUsersStateHandler} onCleanList={cleanUsersHandler}></Users>
       <Card items={arrData} onCleanUser={deleteCardItemHandler}></Card>
     </AppContainer>
