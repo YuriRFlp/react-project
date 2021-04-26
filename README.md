@@ -16,7 +16,7 @@ Esse projeto objetiva colocar em prática conceitos básicos de React como, comp
 - [Styled Components](https://styled-components.com/)
 
 ## 🦸 Autor
-Yuri Ribeiro Felipe
-<img src="https://img.shields.io/static/v1?label=Gmail&message=yurirflp@gmail.com&color=EA4335&style=social&logo=gmail"/>
-<a href="https://www.linkedin.com/in/yuri-ribeiro-felipe/"><img src="https://img.shields.io/static/v1?label=LinkedIn&message=Yuri_Felipe&color=0A66C2&style=social&logo=linkedin"/></a>
+* Yuri Ribeiro Felipe
+* <img src="https://img.shields.io/static/v1?label=Gmail&message=yurirflp@gmail.com&color=EA4335&style=social&logo=gmail"/>
+* <a href="https://www.linkedin.com/in/yuri-ribeiro-felipe/"><img src="https://img.shields.io/static/v1?label=LinkedIn&message=Yuri_Felipe&color=0A66C2&style=social&logo=linkedin"/></a>
 
