@@ -4,11 +4,16 @@ import Button from '../UI/Button/Button';
 const Li = styled.li`
     list-style: none;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     border-radius: 5px;
     background-color: #ccc;
     padding: .5rem;
     margin: 1rem;
+
+    & p{
+        margin: 1rem;
+    }
 `;
 
 const ListItems = (props) => {

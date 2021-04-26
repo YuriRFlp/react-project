@@ -6,7 +6,7 @@ const Button = styled.button`
     border: none;
     border-radius: 5px;
     color: #fff;
-    padding: .3rem .8rem;
+    padding: .5rem 2rem;
     text-transform: uppercase;
     text-shadow: 1px 1px .5px #000;
     margin: 1rem 0 .5rem 0;
@@ -21,7 +21,7 @@ const Button = styled.button`
     }
 
     @media (min-width: 38rem){
-        align-self: start;
+        align-self: center;
     }
 `;
 

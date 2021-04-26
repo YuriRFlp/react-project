@@ -7,7 +7,11 @@ import Alert from '../UI/Alert/Alert';
 const Form = styled.form`
     display: flex;
     flex-flow: column;
-    text-align: left;
+
+    & div{
+        display: flex;
+        flex-flow: column;
+    }
 
     & label{
         margin: .6rem 0 .3rem 0;
@@ -21,6 +25,19 @@ const Form = styled.form`
         &:focus{
             outline: none;
             box-shadow: 0 0 0 1px #274360;
+        }
+    }
+
+    @media (min-width: 38rem){
+        flex-flow: row;
+        justify-content: space-around;
+
+        & div{
+            width: 50%;
+        }
+
+        & div:nth-child(2){
+            padding-top: 2.5rem;
         }
     }
 `;
@@ -85,14 +102,18 @@ const Users = (props) => {
             {error && <Alert title={error.title} message={error.message} onClick={errorHandler}></Alert>}
             <Container>
                 <Form onSubmit={submitHandler}>
-                    <label htmlFor="username">Usuário</label>
-                    <input id="username" type="text" value={username} onChange={saveUserHandler}/>
-                    <label htmlFor="age">Idade</label>
-                    <input id="age" type="number" value={age} onChange={saveAgeHandler}/>
-                    <label htmlFor="nationality">Nacionalidade</label>
-                    <input id="nationality" type="text" value={nationality} onChange={saveNationalityHandler}/>
-                    <Button type="submit">Adicionar Usuário</Button>
-                    <Button type="button" onClick={props.onCleanList}>Limpar Usuários</Button>
+                    <div>
+                        <label htmlFor="username">Usuário</label>
+                        <input id="username" type="text" value={username} onChange={saveUserHandler}/>
+                        <label htmlFor="age">Idade</label>
+                        <input id="age" type="number" value={age} onChange={saveAgeHandler}/>
+                        <label htmlFor="nationality">Nacionalidade</label>
+                        <input id="nationality" type="text" value={nationality} onChange={saveNationalityHandler}/>
+                    </div>
+                    <div>
+                        <Button type="submit">Adicionar Usuário</Button>
+                        <Button type="button" onClick={props.onCleanList}>Limpar Usuários</Button>
+                    </div>
                 </Form>
             </Container>
         </Fragment>
