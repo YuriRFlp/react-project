@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Button from '../UI/Button/Button';
 
-const CardItemsContainer = styled.div`
+const Li = styled.li`
+    list-style: none;
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
@@ -10,19 +11,20 @@ const CardItemsContainer = styled.div`
     margin: 1rem;
 `;
 
-const CardItems = (props) => {
+const ListItems = (props) => {
     const saveCardItemHandler = (event) => {
         const cardItemClicked = event.target.parentNode;
         props.onLifting(cardItemClicked);
     }
 
     return(
-        <CardItemsContainer id={props.id}>
+        <Li id={props.id}>
             <p>{props.user}</p>
             <p>{props.years} anos</p>
+            <p>{props.nationality}</p>
             <Button type="button" onClick={saveCardItemHandler}>Excluir</Button>
-        </CardItemsContainer>
+        </Li>
     )
 }
 
-export default CardItems;
+export default ListItems;

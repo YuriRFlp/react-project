@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Users from './Components/Users/Users';
-import Card from './Components/Card/Card';
+import List from './Components/List/List';
 import { useState } from 'react';
 
 const AppContainer = styled.div`
@@ -15,36 +15,36 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [arrData, setArrData] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   const liftUsersStateHandler = (enteredData) => {
-    setArrData( (prevArrData) => {
-      return [enteredData, ...prevArrData];
+    setUserData( (prevUserData) => {
+      return [...prevUserData, enteredData];
     });
   }
 
   const cleanUsersHandler = () => {
-    setArrData([]);
+    setUserData([]);
   }
   
   const deleteCardItemHandler = cardItem => {
     let indCardItem;
-    for(let i = 0; i < arrData.length; i++){
-      if(arrData[i].id === cardItem.id){
+    for(let i = 0; i < userData.length; i++){
+      if(userData[i].id === cardItem.id){
         indCardItem = i;
       }
     }
-    arrData.splice(indCardItem, 1);
-    setArrData( (prevArrData) => {
-      return [...prevArrData];
+    userData.splice(indCardItem, 1);
+    setUserData( (prevUserData) => {
+      return [...prevUserData];
     });
   }
 
   return (
     <AppContainer>
       <h1>Lista de Usuários</h1>
-      <Users onLiftingState={liftUsersStateHandler} onCleanList={cleanUsersHandler}></Users>
-      <Card items={arrData} onCleanUser={deleteCardItemHandler}></Card>
+      <Users onLiftingState={liftUsersStateHandler} onCleanList={cleanUsersHandler}/>
+      <List items={userData} onCleanUser={deleteCardItemHandler}/>
     </AppContainer>
   );
 }

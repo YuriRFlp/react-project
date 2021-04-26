@@ -1,8 +1,8 @@
 import Container from '../UI/Container/Container';
 import Button from '../UI/Button/Button';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import styled from 'styled-components';
-// import Alert from '../Alert/Alert';
+import Alert from '../UI/Alert/Alert';
 
 const Form = styled.form`
     display: flex;
@@ -28,53 +28,74 @@ const Form = styled.form`
 const Users = (props) => {
     const [username, setUsername] = useState('');
     const [age, setAge] = useState('');
+    const [nationality, setNationality] = useState('');
+    const [error, setError] = useState();
 
     const saveUserHandler = (event) => {
         setUsername(event.target.value);
     }
     
     const saveAgeHandler = (event) => {
-        setAge(event.target.value);
+        setAge(Number(event.target.value));
+    }
+
+    const saveNationalityHandler = (event) => {
+        setNationality(event.target.value);
     }
     
     const submitHandler = (event) => {
         event.preventDefault();
+
+        if(username.trim().length === 0 || age.length === 0 || nationality.trim().length === 0){
+            setError({
+                title: "Entrada Inválida",
+                message: "Por favor, preencha todos os campos."
+            });
+            return;
+        };
+
+        if(age <= 0 || age > 150){
+            setError({
+                title: "Idade Inválida",
+                message: "Por favor, entre com a idade correta (0 < idade < 150)."
+            });
+            return;
+        };
     
         const enteredData = {
             id: Math.random().toString(),
             user: username,
-            years: age
+            years: age,
+            nationality: nationality
         }
 
         props.onLiftingState(enteredData);
     
         setUsername('');
         setAge('');
+        setNationality('');
     }
 
-    
+    const errorHandler = () => {
+        setError(null);
+    }
 
-    // if(username === undefined || age === undefined){
-    //     return(
-    //         <Alert message={errorMessage[1]}></Alert>
-    //     )
-    // }
-    // if(age <= 0 || age > 150){
-    //     return(
-    //         <Alert message={errorMessage[0]}></Alert>
-    //     )
-    // }
     return(
-        <Container>
-            <Form onSubmit={submitHandler}>
-                <label>Usuário</label>
-                <input type="text" value={username} onChange={saveUserHandler} autoFocus required/>
-                <label>Idade</label>
-                <input type="number" min="0" max="150" value={age} onChange={saveAgeHandler} required/>
-                <Button type="submit">Adicionar Usuário</Button>
-                <Button type="button" onClick={props.onCleanList}>Limpar Usuários</Button>
-            </Form>
-        </Container>
+        <Fragment>
+            {error && <Alert title={error.title} message={error.message} onClick={errorHandler}></Alert>}
+            <Container>
+                <Form onSubmit={submitHandler}>
+                    <label htmlFor="username">Usuário</label>
+                    <input id="username" type="text" value={username} onChange={saveUserHandler}/>
+                    <label htmlFor="age">Idade</label>
+                    <input id="age" type="number" value={age} onChange={saveAgeHandler}/>
+                    <label htmlFor="nationality">Nacionalidade</label>
+                    <input id="nationality" type="text" value={nationality} onChange={saveNationalityHandler}/>
+                    <Button type="submit">Adicionar Usuário</Button>
+                    <Button type="button" onClick={props.onCleanList}>Limpar Usuários</Button>
+                </Form>
+            </Container>
+        </Fragment>
     )
 }
 
