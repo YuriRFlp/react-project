@@ -10,6 +10,13 @@ Esse projeto objetiva colocar em prática conceitos básicos de React como, comp
 2. Cada item pode ser excluido individualmente ao clicar nos botões `EXCLUIR`; 
 3. Também é possível excluir todos os items ao mesmo tempo ao clicar no botão `LIMPAR USUÀRIOS`.
 
+## 🎨 Layout
+### Tela principal
+<img src="./src/imagens/home.png" alt="Screenshot da tela inicial">
+
+### Lista de Usuários
+<img src="./src/imagens/users-list.png" alt="Screenshot da lista de usuários">
+
 ## 🛠 Tecnologias
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [React](https://reactjs.org/)
